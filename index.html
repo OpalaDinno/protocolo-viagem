@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocolo de Viagem do Integrante</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f2f2;
+      color: #222;
+    }
+    .container {
+      width: min(680px, calc(100% - 24px));
+      margin: 24px auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.10);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin: 0 0 24px;
+      font-size: 14px;
+    }
+    .field { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="time"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #ccc;
+      border-radius: 9px;
+      font-size: 16px;
+      background: #fff;
+    }
+    .static {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      background: #f7f7f7;
+      color: #555;
+    }
+    .options {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .option {
+      flex: 1 1 120px;
+      position: relative;
+    }
+    .option input {
+      position: absolute;
+      opacity: 0;
+    }
+    .option span {
+      display: block;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 9px;
+      text-align: center;
+      cursor: pointer;
+      background: #fff;
+    }
+    .option input:checked + span {
+      border-color: #222;
+      background: #eee;
+      font-weight: 700;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #25D366;
+      color: #fff;
+    }
+    button:hover { filter: brightness(.95); }
+    .note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .required { color: #b00020; }
+    @media (max-width: 520px) {
+      .container { padding: 18px; margin: 12px auto; }
+      .row { grid-template-columns: 1fr; gap: 0; }
+      h1 { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>Protocolo de Viagem do Integrante</h1>
+    <p class="subtitle">Preencha os dados abaixo e envie o protocolo pelo WhatsApp.</p>
+
+    <form id="travelForm">
+      <div class="field">
+        <label for="nomeColete">Nome de Colete <span class="required">*</span></label>
+        <input id="nomeColete" name="nomeColete" type="text" required>
+      </div>
+
+      <div class="field">
+        <label for="grau">Grau <span class="required">*</span></label>
+        <input id="grau" name="grau" type="text" required>
+      </div>
+
+      <div class="field">
+        <label>Divisão</label>
+        <div class="static">Extremo Sul</div>
+      </div>
+
+      <div class="field">
+        <label>Regional</label>
+        <div class="static">Vale do Paraíba I - SP</div>
+      </div>
+
+      <div class="field">
+        <label for="origem">Cidade de origem <span class="required">*</span></label>
+        <input id="origem" name="origem" type="text" required>
+      </div>
+
+      <div class="field">
+        <label for="destino">Cidade de destino <span class="required">*</span></label>
+        <input id="destino" name="destino" type="text" required>
+      </div>
+
+      <div class="field">
+        <label for="parada">Primeira cidade de parada <span class="required">*</span></label>
+        <input id="parada" name="parada" type="text" required>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="dataSaida">Data de saída <span class="required">*</span></label>
+          <input id="dataSaida" name="dataSaida" type="date" required>
+        </div>
+        <div class="field">
+          <label for="horaSaida">Hora <span class="required">*</span></label>
+          <input id="horaSaida" name="horaSaida" type="time" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="dataRetorno">Previsão de retorno <span class="required">*</span></label>
+          <input id="dataRetorno" name="dataRetorno" type="date" required>
+        </div>
+        <div class="field">
+          <label for="horaRetorno">Hora <span class="required">*</span></label>
+          <input id="horaRetorno" name="horaRetorno" type="time" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Está viajando de <span class="required">*</span></label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="veiculo" value="Moto" required>
+            <span>🏍️ Moto</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="veiculo" value="Carro">
+            <span>🚗 Carro</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="veiculo" value="Outros">
+            <span>Outros</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Com as Cores <span class="required">*</span></label>
+        <div class="options">
+          <label class="option">
+            <input type="radio" name="cores" value="Sim" required>
+            <span>Sim</span>
+          </label>
+          <label class="option">
+            <input type="radio" name="cores" value="Não">
+            <span>Não</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="contato">Contato <span class="required">*</span></label>
+        <input id="contato" name="contato" type="tel" inputmode="tel" placeholder="(12) 99999-9999" required>
+      </div>
+
+      <button type="submit">📲 Enviar pelo WhatsApp</button>
+      <div class="note">
+        Ao tocar no botão, o WhatsApp será aberto com o protocolo preenchido.
+        O usuário poderá revisar a mensagem antes de enviá-la.
+      </div>
+    </form>
+  </main>
+
+  <script>
+    // ============================================================
+    // ALTERE SOMENTE ESTA LINHA:
+    // Coloque o número que deverá RECEBER os protocolos.
+    // Formato: código do país + DDD + número, sem espaços ou símbolos.
+    // Exemplo: 5512999999999
+    // ============================================================
+    const NUMERO_WHATSAPP_DESTINO = "5512999999999";
+
+    function formatarData(data) {
+      if (!data) return "";
+      const [ano, mes, dia] = data.split("-");
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    document.getElementById("travelForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const nomeColete = document.getElementById("nomeColete").value.trim();
+      const grau = document.getElementById("grau").value.trim();
+      const origem = document.getElementById("origem").value.trim();
+      const destino = document.getElementById("destino").value.trim();
+      const parada = document.getElementById("parada").value.trim();
+      const dataSaida = formatarData(document.getElementById("dataSaida").value);
+      const horaSaida = document.getElementById("horaSaida").value;
+      const dataRetorno = formatarData(document.getElementById("dataRetorno").value);
+      const horaRetorno = document.getElementById("horaRetorno").value;
+      const veiculo = document.querySelector('input[name="veiculo"]:checked')?.value || "";
+      const cores = document.querySelector('input[name="cores"]:checked')?.value || "";
+      const contato = document.getElementById("contato").value.trim();
+
+      const mensagem =
+`🏍️ *PROTOCOLO DE VIAGEM DO INTEGRANTE*
+
+*Nome de Colete:* ${nomeColete}
+*Grau:* ${grau}
+*Divisão:* Extremo Sul
+*Regional:* Vale do Paraíba I - SP
+*Cidade de origem:* ${origem}
+*Cidade de destino:* ${destino}
+*Primeira cidade de parada:* ${parada}
+
+*Data de saída:* ${dataSaida}
+*Hora de saída:* ${horaSaida}
+
+*Previsão de retorno:* ${dataRetorno}
+*Hora de retorno:* ${horaRetorno}
+
+*Está viajando de:* ${veiculo}
+*Com as Cores:* ${cores}
+*Contato:* ${contato}`;
+
+      const url = `https://wa.me/${NUMERO_WHATSAPP_DESTINO}?text=${encodeURIComponent(mensagem)}`;
+
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
