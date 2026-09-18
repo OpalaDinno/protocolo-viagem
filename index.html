@@ -58,11 +58,12 @@ body:before{
 .field{margin-bottom:2px}
 label{display:block;font-weight:700;margin:0 0 7px;font-size:15px}
 .req{color:#ff4b4b}
-input{
+input, select{
   width:100%;padding:13px 14px;border:1px solid #536273;border-radius:8px;
   background:#151d25;color:#fff;font-size:16px;outline:none;
 }
-input:focus{border-color:var(--yellow);box-shadow:0 0 0 2px rgba(245,185,0,.12)}
+input:focus, select:focus{border-color:var(--yellow);box-shadow:0 0 0 2px rgba(245,185,0,.12)}
+select{background:#151d25;color:#fff;font-size:16px;outline:none;appearance:auto;}
 .static{padding:13px 14px;border:1px solid #3b4753;border-radius:8px;background:#11171d;color:#c8d0d8}
 .lock{float:right;color:#8894a0}
 .options{display:flex;gap:10px;flex-wrap:wrap}
@@ -128,11 +129,21 @@ button.copy{background:#252d36}
       </div>
       <div class="field">
         <label for="grau">Grau <span class="req">*</span></label>
-        <input id="grau" required placeholder="Informe o grau">
+        <select id="grau" required>
+          <option value="" disabled selected>Selecione o grau</option>
+          <option value="Grau X - Camiseta/PP">Grau X - Camiseta/PP</option>
+          <option value="Grau IX - Meio Colete">Grau IX - Meio Colete</option>
+          <option value="Grau VIII - Full">Grau VIII - Full</option>
+          <option value="Grau VI - Diretor">Grau VI - Diretor</option>
+          <option value="Grau VI - Sub-Diretor">Grau VI - Sub-Diretor</option>
+          <option value="Grau VI - Social">Grau VI - Social</option>
+          <option value="Grau VI - ADM">Grau VI - ADM</option>
+          <option value="Grau VI - SGT Armas">Grau VI - SGT Armas</option>
+        </select>
       </div>
       <div class="field">
         <label>Divisão</label>
-        <div class="static">Extremo Sul <span class="lock">🔒</span></div>
+        <div class="static">Extremo Sul SJC-SP <span class="lock">🔒</span></div>
       </div>
       <div class="field">
         <label>Regional</label>
@@ -235,7 +246,7 @@ function mensagem(){
 
 *Nome de Colete:* ${val("nome")}
 *Grau:* ${val("grau")}
-*Divisão:* Extremo Sul
+*Divisão:* Extremo Sul SJC-SP
 *Regional:* Vale do Paraíba I - SP
 
 *Cidade de origem:* ${val("origem")}
