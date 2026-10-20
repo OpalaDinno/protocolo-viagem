@@ -202,18 +202,14 @@ button.copy{background:#252d36}
 
   <section class="card info">
     <strong>ℹ️ IMPORTANTE</strong>
-    <p>Após preencher o formulário, envie o protocolo pelo WhatsApp para os responsáveis.</p>
-    <p>🟢 <strong>Gouveia:</strong> +55 12 99777-7615</p>
+    <p>Após preencher o formulário, clique em <strong>ENVIAR PROTOCOLO</strong>. O mesmo protocolo será aberto no WhatsApp para os dois responsáveis pelo controle.</p>
+    <p>🟢 <strong>Diretor Junior:</strong> +55 12 98168-6584</p>
     <p>🟢 <strong>Castilho:</strong> +55 12 98120-9534</p>
   </section>
 
   <div class="actions">
-    <button type="button" onclick="enviar('5512997777615')">🟢 ENVIAR PARA GOUVEIA</button>
-    <button type="button" class="secondary" onclick="enviar('5512981209534')">🟢 ENVIAR PARA CASTILHO</button>
-  </div>
-  <div class="actions">
+    <button type="button" onclick="enviarAmbos()">📲 ENVIAR PROTOCOLO</button>
     <button type="button" class="copy" onclick="copiar()">📋 COPIAR PROTOCOLO</button>
-    <button type="button" class="copy" onclick="enviarAmbos()">📲 TENTAR ENVIAR PARA OS DOIS</button>
   </div>
 
   <p class="notice">
@@ -263,14 +259,11 @@ function mensagem(){
 *Com as Cores:* ${cores}
 *Contato:* ${val("contato")}`;
 }
-function enviar(numero){
-  const msg=mensagem(); if(!msg)return;
-  window.location.href=`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
-}
 function enviarAmbos(){
   const msg=mensagem(); if(!msg)return;
-  // O navegador pode bloquear uma das duas janelas, especialmente no celular.
-  const u1=`https://wa.me/5512997777615?text=${encodeURIComponent(msg)}`;
+  // Abre o mesmo protocolo para os dois responsáveis.
+  // O envio final precisa ser confirmado no WhatsApp.
+  const u1=`https://wa.me/5512981686584?text=${encodeURIComponent(msg)}`;
   const u2=`https://wa.me/5512981209534?text=${encodeURIComponent(msg)}`;
   const w1=window.open(u1,"_blank");
   setTimeout(()=>window.open(u2,"_blank"),700);
